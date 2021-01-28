@@ -7,12 +7,21 @@ class User < ApplicationRecord
   has_many :posts
 
   def password_string
-    @password_string ||= Password.new(self.password)
+    @password ||= Password.new(password_hash)
   end
 
-  def password_string=(new_password)
-    @password_string = Password.create(new_password)
-    self.password = @password_string
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+
+  def login
+    @user = User.find_by_email(params[:email])
+    if @user.password == params[:password]
+      give_token
+    else
+      redirect_to users_url
+    end
   end
 
   validates :email,
