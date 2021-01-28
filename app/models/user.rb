@@ -1,18 +1,19 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+  has_secure_password
   include BCrypt
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
   has_many :posts
 
   def password_string
-    @password ||= Password.new(password_hash)
+    @password_string ||= Password.new(self.password)
   end
 
-  def password=(new_password)
-    @password = Password.create(new_password)
-    self.password_hash = @password
+  def password_string=(new_password)
+    @password_string = Password.create(new_password)
+    self.password = @password_string
   end
 
   def login
