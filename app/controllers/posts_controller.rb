@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   def create
     @post = Post.create(post_params)
     redirect_to posts_url
@@ -9,6 +9,13 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all
   end
+
+  def index_API
+    @posts = Post.all
+    render json: @posts
+  end
+
+
 
   private
 
