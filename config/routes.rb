@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post 'sessions/create'
   get 'sessions/destroy'
   get '/index_API', to: "posts#index_API"
+  post '/create_API', to: "posts#create_API"
 end

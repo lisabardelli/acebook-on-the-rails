@@ -6,6 +6,31 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
 
+  def create_API
+#     respond_to do |format|
+
+#       @post = Post.new(params[:post])
+#        if @post.save
+#         #  flash[:notice] = "Prayer Successfully created."
+#          format.json{ render :json => @post, :status => :created }
+
+#          p format
+#        else 
+#         #  flash[:notice] = "Error"
+#          format.json{ render :json => @post, :status => :created }
+#        end
+#     end 
+# "---------------"
+data_json = JSON.parse request.body.read
+p 'data_json'
+p data_json
+@post = Post.new(data_json)
+@post.save
+
+
+  end
+
+
   def index
     @post = Post.new
     @posts = Post.all
