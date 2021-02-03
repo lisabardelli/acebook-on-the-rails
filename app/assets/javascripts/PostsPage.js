@@ -10,7 +10,7 @@ constructor(props) {
   this.state = {
     list: []
   }
-  }
+}
 
 
 // call to API
@@ -74,7 +74,7 @@ ReactDOM.render(p(PostPage), pageContainer);
 // fetch(url)
 // .then(response => response.json())
 // .then(data => {
- 
+
 //     console.log('data')
 //     console.log(data)
 //     data.forEach(post => {
@@ -89,4 +89,3 @@ ReactDOM.render(p(PostPage), pageContainer);
 //     })
 // }
 // )
-
