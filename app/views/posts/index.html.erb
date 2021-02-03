@@ -1,42 +1,11 @@
-<div>
 
-  <div class="jumbotron">
-    <div class='border-bottom border-dark'>
-      <h1>Acebook</h1>
-      </div>
-    </div>
-  </div>
+<div id="posts-list"></div>
+<div id="react-container"></div>
+  
 
-  <div class='container'>
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
-    <div id="new_post_form" class='container text-center'>
-      <%= form_for @post do |form| %>
-      <div class='row mb-4'>
-        <div class='col-xs-4 col-xs-offset-4'>
-          <%= form.text_field :message %>
-        </div>
-      </div>
-      <div class='row mb-4'>
-        <div class='col-xs-4 col-xs-offset-4'>
-          <%= form.submit "Submit", :class => "btn btn-dark" %>
-        </div>
-      </div>
-      <% end %>
-    </div>
-
-    <div id="post_display_area" class='container'>
-      <% @posts.each do |post| %>
-        <div class='row mb-4'>
-          <div class='col-xs-4 col-xs-offset-4'>
-            <div class='p-3 border border-dark'>
-            <p><%= post.message %></p>
-            <p>Added at <%= l post.created_at %> </p>
-            <p>Added by <%= post.user.username %> </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
-</div>
+  <!-- Load our React component. -->
+  <%= javascript_include_tag 'postPage.js' %>
