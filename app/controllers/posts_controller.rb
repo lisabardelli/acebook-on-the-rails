@@ -19,41 +19,23 @@ class PostsController < ApplicationController
     INNER JOIN users 
     ON posts.user_id = users.id'
     @posts = ActiveRecord::Base.connection.execute(sql)
-    # p 'posts as result of sql query' 
-    # posts is a list of hash
-    #  @posts.each do |post|
-    #   p post
-      # it returns an hash
-    # end 
-   
-"-----------------"
 json_object = {
   "posts"=> []
 }
-
-@posts.each do |post|
-  # post['id'] to get the id
-json_subnode = {
-  "id": post['id'],
-  "message": post['message'],
-  "created_at": post['created_at'],
-  "updated_at": post['updated_at'],
-  "username": post['username']
-}
-# p 'json_subnode'
-#  p json_subnode
-json_object["posts"]<< json_subnode
-p 'json_object'
- p json_object
-end 
-"-----------------"
-# @posts = Post.all
-
+      @posts.each do |post|
+      json_subnode = {
+        "id": post['id'],
+        "message": post['message'],
+        "created_at": post['created_at'],
+        "updated_at": post['updated_at'],
+        "username": post['username']
+      }
+      json_object["posts"]<< json_subnode
+      p 'json_object'
+      p json_object
+      end 
     render json: @posts
-
-
   end
-
 
   private
 
