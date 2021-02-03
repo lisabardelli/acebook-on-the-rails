@@ -8,6 +8,7 @@
   <div class='container'>
 
     <div id='like-button'></div>
+    <%= react_component("PostPage") %>
     <div id='posts-page'></div>
     <div id='display-posts'></div>
 
@@ -31,4 +32,3 @@
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <%= javascript_include_tag 'LikeButton' %>
-<%= javascript_include_tag 'PostsPage' %>

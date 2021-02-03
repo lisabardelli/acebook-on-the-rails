@@ -54,9 +54,12 @@ getData() {
 
 render() {
   return p(
-    'button',
-    { onClick: () => this.getData()},
-    'getData'
+    // 'button',
+    // { onClick: () => this.getData()},
+    // 'getData'
+
+  <button> Like </button>
+
   );
 }
 
@@ -74,7 +77,7 @@ ReactDOM.render(p(PostPage), pageContainer);
 // fetch(url)
 // .then(response => response.json())
 // .then(data => {
- 
+
 //     console.log('data')
 //     console.log(data)
 //     data.forEach(post => {
