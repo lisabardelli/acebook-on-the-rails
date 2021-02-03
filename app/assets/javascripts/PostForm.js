@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Please write your post.'
+      value: "Please write your post.",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -12,23 +12,28 @@ class PostForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    fetch('/posts/create', {
+    fetch("/posts/create", {
       headers: {
-      'Content-Type': 'application/json',
-    },
-      method: 'POST',
-      body: 
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        message: this.state.value,
+      }),
     })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result)
-  })
-};
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log("er", err);
+      });
+  }
 
   render() {
     return (
@@ -36,7 +41,7 @@ class PostForm extends React.Component {
       React.createElement(
         "form",
         {
-          onSubmit: this.handleSubmit
+          onSubmit: this.handleSubmit,
         },
         /*#__PURE__*/ React.createElement(
           "label",
@@ -44,12 +49,12 @@ class PostForm extends React.Component {
           "Post:",
           /*#__PURE__*/ React.createElement("textarea", {
             value: this.state.value,
-            onChange: this.handleChange
+            onChange: this.handleChange,
           })
         ),
         /*#__PURE__*/ React.createElement("input", {
           type: "submit",
-          value: "Submit"
+          value: "Submit",
         })
       )
     );
