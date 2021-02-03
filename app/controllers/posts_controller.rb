@@ -47,7 +47,11 @@ p 'json_object'
  p json_object
 end 
 "-----------------"
+
+# @posts = Post.all
+
     render json: @posts
+
 
   end
 
