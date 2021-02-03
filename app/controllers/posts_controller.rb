@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     # posts is a list of hash
     #  @posts.each do |post|
     #   p post
-      # it resturns an hash
+      # it returns an hash
     # end 
    
 "-----------------"
@@ -47,7 +47,6 @@ p 'json_object'
  p json_object
 end 
 "-----------------"
-
 # @posts = Post.all
 
     render json: @posts
