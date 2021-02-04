@@ -4,7 +4,7 @@ class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "Please write your post.",
+      message: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -12,18 +12,22 @@ class PostForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ message: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    const csrf = document
+      .querySelector("meta[name='csrf-token']")
+      .getAttribute("content");
     fetch("/posts/create", {
       headers: {
         "Content-Type": "application/json",
+        "X-CSRF-Token": csrf,
       },
       method: "POST",
       body: JSON.stringify({
-        message: this.state.value,
+        message: this.state.message,
       }),
     })
       .then((response) => response.json())
@@ -36,32 +40,29 @@ class PostForm extends React.Component {
   }
 
   render() {
-    return (
-      /*#__PURE__*/
+    return React.createElement(
+      "form",
+      {
+        onSubmit: this.handleSubmit,
+      },
       React.createElement(
-        "form",
-        {
-          onSubmit: this.handleSubmit,
-        },
-        /*#__PURE__*/ React.createElement(
-          "label",
-          null,
-          "Post:",
-          /*#__PURE__*/ React.createElement("textarea", {
-            value: this.state.value,
-            onChange: this.handleChange,
-          })
-        ),
-        /*#__PURE__*/ React.createElement("input", {
-          type: "submit",
-          value: "Submit",
+        "label",
+        null,
+        "Post:",
+        React.createElement("textarea", {
+          message: this.state.value,
+          onChange: this.handleChange,
         })
-      )
+      ),
+      React.createElement("input", {
+        type: "submit",
+        value: "Submit",
+      })
     );
   }
 }
 
 ReactDOM.render(
-  /*#__PURE__*/ React.createElement(PostForm, null),
+  React.createElement(PostForm, null),
   document.getElementById("post-form")
 );
