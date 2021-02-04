@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.create(post_params)
-    render 
+
     redirect_to posts_url
   end
   def create_API
@@ -23,8 +23,8 @@ class PostsController < ApplicationController
     p "iam in the index_api"
     @post = Post.new
     sql = 'SELECT posts.*, users.username
-    FROM posts 
-    INNER JOIN users 
+    FROM posts
+    INNER JOIN users
     ON posts.user_id = users.id'
     @posts = ActiveRecord::Base.connection.execute(sql)
 json_object = {
@@ -39,7 +39,7 @@ json_object = {
         "username": post['username']
       }
       json_object["posts"]<< json_subnode
-      end 
+      end
     render json: @posts
   end
 
