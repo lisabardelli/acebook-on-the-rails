@@ -1,38 +1,59 @@
-[![Build Status](https://travis-ci.com/Will-Helliwell/acebook-on-the-rails.svg?branch=master)](https://github.com/Will-Helliwell/acebook-on-the-rails)
-
 # AceBook
 
-## Links
+A social media platform where user can add a post and like other people's posts.
 
-- [Trello Board](https://trello.com/b/XiB46v42/acebook-on-the-rails)
-- [Original project spec](https://github.com/makersacademy/course/tree/master/engineering_projects/rails)
+In order to add a post, user needs to sign up and login. 
 
-## How to contribute to this project
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+## Build status
 
-## To Use
+[![Build Status](https://travis-ci.com/Will-Helliwell/acebook-on-the-rails.svg?branch=master)](https://github.com/Will-Helliwell/acebook-on-the-rails)
 
-### From Heroku
 
-[Visit live deployment](https://acebook-on-the-rails.herokuapp.com/)
+## How to run the app
 
-### From your local machine
 
-First, clone this repository. Then:
+From your local machine, clone this repository
+
+```
+git clone https://github.com/lisabardelli/acebook-on-the-rails.git
+```
+
+Move to the project directory
+
+```
+cd acebook-on-the-rails
+```
+
+Run the following to create the database
 
 ```bash
 > bundle install
 > bin/rails db:create
 > bin/rails db:migrate
-
-> bin/rails server # Start the server at localhost:3000
 ```
 
-To run tests:
+Start the server and the visit localhost:3000
+```
+> bin/rails server 
+```
+
+## How to run the tests
+
 ```bash
 > rspec
 ```
 
-###
+## **App**
+## **Sign up**
+![Sign up](signup.png)
+## **Add post**
+![Add post](add_post.png)
+![Showing post](add-post_2.png)
+## **Like post**
+![Like](like.png)
 
-For work process, see the project Wiki
+## Heroku link
+
+[Visit live deployment](https://acebook-on-the-rails.herokuapp.com/)
+
+

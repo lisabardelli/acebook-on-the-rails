@@ -12,13 +12,13 @@
 
   render() {
     if (this.state.liked) {
-      return 'You lykked this.';
+      return 'You liked it.';
     }
 
     return e(
       'button',
       { onClick: () => this.setState({ liked: true }) },
-      'Lykke'
+      'Like'
     );
   }
 
