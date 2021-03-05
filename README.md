@@ -15,13 +15,13 @@ In order to add a post, user needs to sign up and login.
 From your local machine, clone this repository
 
 ```
-git clone https://github.com/lisabardelli/acebook-on-the-rails.git
+git clone https://github.com/lisabardelli/acebook_on_the_rails.git
 ```
 
 Move to the project directory
 
 ```
-cd acebook-on-the-rails
+cd acebook_on_the_rails
 ```
 
 Run the following to create the database
